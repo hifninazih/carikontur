@@ -7,7 +7,7 @@ function App() {
   // THEME LOCALSTORAGE
   // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "lemonade"
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "garden"
   );
 
   // update state on toggle
@@ -15,7 +15,7 @@ function App() {
     if (e.target.checked) {
       setTheme("dark");
     } else {
-      setTheme("lemonade");
+      setTheme("garden");
     }
   };
   // set theme state in localstorage on mount & also update localstorage on state change
