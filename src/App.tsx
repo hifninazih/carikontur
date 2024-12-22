@@ -31,9 +31,9 @@ function App() {
 
   const defaultFormData = {
     interval: 0.5,
-    tinggi1: 0,
-    tinggi2: 0,
-    jarak: 0,
+    tinggi1: "",
+    tinggi2: "",
+    jarak: "",
   };
 
   type FormDataType = {
@@ -43,8 +43,14 @@ function App() {
     jarak: number;
   };
 
-  const [formData, setFormData] = useState<FormDataType>(defaultFormData);
+  // State untuk form input
+  const [formData, setFormData] = useState<FormDataType>(
+    localStorage.getItem("formData")
+      ? JSON.parse(localStorage.getItem("formData") as string)
+      : defaultFormData
+  );
 
+  // State untuk hasil hitung
   const [hasil, setHasil] = useState<any>([]);
 
   const [both, setBoth] = useState<boolean>(false);
@@ -57,16 +63,29 @@ function App() {
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
+      const newValue = parseFloat(value) || "";
+
+      // Update the state
       setFormData((prevData: any) => ({
         ...prevData,
-        [name]: parseFloat(value),
+        [name]: newValue,
       }));
     },
-    []
+    [formData]
   );
 
+  // useEffect to store updated formData in localStorage
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
+
   const handleReset = () => {
-    setFormData(defaultFormData);
+    setFormData((prevData: any) => ({
+      ...prevData,
+      tinggi1: defaultFormData.tinggi1,
+      tinggi2: defaultFormData.tinggi2,
+      jarak: defaultFormData.jarak,
+    }));
   };
 
   const handleSwitch = () => {
@@ -112,7 +131,7 @@ function App() {
       }
     }
     setHasil(result);
-    console.log(result);
+    // console.log(result);
   }, [formData]);
 
   useEffect(() => {

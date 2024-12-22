@@ -17,13 +17,11 @@ const Results = ({ hasil }: any) => {
             <tbody>
               {hasil.map((item: any, index: number) => {
                 return (
-                  <>
-                    <tr>
-                      <th>{index + 1}</th>
-                      <td>{item.intervalKe}</td>
-                      <td>{item.akumulasi} cm</td>
-                    </tr>
-                  </>
+                  <tr key={index}>
+                    <th>{index + 1}</th>
+                    <td>{item.intervalKe}</td>
+                    <td>{item.akumulasi} cm</td>
+                  </tr>
                 );
               })}
             </tbody>
