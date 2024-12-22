@@ -1,16 +1,49 @@
 import "./App.css";
+// import useLocalStorage from "./hooks/useLocalStorage";
 import Results from "./components/Results";
 import { useEffect, useState, useCallback } from "react";
 
 function App() {
+  // THEME LOCALSTORAGE
+  // use theme from local storage if available or set light theme
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "lemonade"
+  );
+
+  // update state on toggle
+  const handleThemeToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("lemonade");
+    }
+  };
+  // set theme state in localstorage on mount & also update localstorage on state change
+  useEffect(() => {
+    localStorage.setItem("theme", theme as string);
+    const localTheme = localStorage.getItem("theme");
+    // add custom data-theme attribute to html tag required to update theme using DaisyUI
+    const htmlElement = document.querySelector("html");
+    if (htmlElement) {
+      htmlElement.setAttribute("data-theme", localTheme as string);
+    }
+  }, [theme]);
+
   const defaultFormData = {
     interval: 0.5,
-    tinggi1: "",
-    tinggi2: "",
-    jarak: "",
+    tinggi1: 0,
+    tinggi2: 0,
+    jarak: 0,
   };
 
-  const [formData, setFormData] = useState<any>(defaultFormData);
+  type FormDataType = {
+    interval: number;
+    tinggi1: number;
+    tinggi2: number;
+    jarak: number;
+  };
+
+  const [formData, setFormData] = useState<FormDataType>(defaultFormData);
 
   const [hasil, setHasil] = useState<any>([]);
 
@@ -100,8 +133,11 @@ function App() {
             <input
               type="checkbox"
               value="night"
+              onChange={handleThemeToggle}
+              checked={theme === "dark"}
               className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
             />
+
             <svg
               className="col-start-1 row-start-1 stroke-base-100 fill-base-100"
               xmlns="http://www.w3.org/2000/svg"
