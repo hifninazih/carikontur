@@ -143,7 +143,7 @@ function App() {
 
   return (
     <>
-      <div className="container md:w-2/3 lg:max-w-2xl mx-auto px-4 py-8 h-dvh font-mono">
+      <div className="container flex flex-col md:w-2/3 lg:max-w-2xl mx-auto px-4 py-8 h-dvh font-mono">
         <div className="flex justify-between items-center my-4 gap-2">
           <h1 className="text-sm md:text-3xl font-bold hidden lg:block">
             Cari Kontur
@@ -287,7 +287,7 @@ function App() {
           />
         </div>
 
-        <div className="w-full mt-4">
+        <div className="w-full flex flex-col grow mt-4">
           <Results hasil={hasil} />
         </div>
       </div>
