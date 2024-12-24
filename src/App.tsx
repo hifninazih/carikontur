@@ -148,7 +148,7 @@ function App() {
           <h1 className="text-sm md:text-3xl font-bold hidden lg:block">
             Cari Kontur
           </h1>
-          <label className="cursor-pointer grid place-items-center">
+          <label className="cursor-pointer opacity-50 grid place-items-center">
             <input
               type="checkbox"
               value="night"
@@ -189,7 +189,7 @@ function App() {
           </label>
           <div className="flex flex-row gap-2">
             <label className="input input-sm input-bordered input-outline input-ghost flex items-center gap-2 w-f">
-              <span className="badge badge-sm">Interval</span>
+              <span className="badge badge-sm w-full">Interval Kontur</span>
               <input
                 type="number"
                 className="w-full text-center"
@@ -203,11 +203,11 @@ function App() {
             </label>
 
             <button
-              className="btn btn-sm btn-square btn-outline"
+              className="btn btn-sm btn-square btn-outline opacity-50"
               onClick={handleReset}
               tabIndex={-1}
             >
-              <svg
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
                 viewBox="0 0 24 24"
@@ -219,6 +219,18 @@ function App() {
                   strokeWidth="2"
                   d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
                 ></path>
+              </svg> */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="h-5 w-5"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z"
+                  clipRule="evenodd"
+                />
               </svg>
             </button>
           </div>
